@@ -23,6 +23,9 @@
             <option value="admin">Admin</option>
             <option value="gestor">Gestor</option>
             <option value="colaborador">Colaborador</option>
+
+            <button type="submit">Cadastrar</button>
+            <a href="">Voltar ao Login</a>
         </form>
     </div>
 </body>
