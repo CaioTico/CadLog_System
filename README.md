@@ -45,9 +45,9 @@ O foco principal do projeto é garantir **usabilidade** e **acessibilidade**, co
 <label for="senha">Senha</label>
 <input type="password" name="senha" id="senha" required>
 <label for="perfil">Perfil:</label>
+```
 
 ![imagem](./imagens/Captura%20de%20tela%202024-09-30%20094948.png)
-```
 
 ## Tecnologias Suporte
 
