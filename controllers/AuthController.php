@@ -1,8 +1,8 @@
 <?php
- 
+
 // Requer arquivo 'user.php' que contem o model user com as funções para manipulação de dados de usário
 require_once 'models/user.php';
- 
+
 class AuthController
 {
     // Cria função responsável pelo processo de login
@@ -12,21 +12,24 @@ class AuthController
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $email = $_POST['email'];
             $senha = $_POST['senha'];
- 
+
             $user = User::findByEmail($email);
-            
-            if($user && password_verify($senha, $user['senha'])){
+
+            if($user && password_verify($senha, $user['senha'])){ // Verifica se a senha corresponde a um hash
                 session_start();
 
+                // Armazena na sessão o ID do usuário e seu perfil
                 $_SESSION['usuario_id'] = $user['id'];
-                $_SESSION['perfil']     = $user['perfil'];
+                $_SESSION['perfil'] = $user['perfil'];
 
                 header('Location: index.php?action=dashboard');
+
             }else{
                 echo "Email ou senha incorretos";
-            }
+            }          
         }else{
-            include  'views/login.php';
+            // Se a requisição não for POST (por exemplo, GET), carrega a página de registro
+            include 'views/login.php';
         }
     }
 }

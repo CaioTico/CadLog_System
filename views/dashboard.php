@@ -1,5 +1,3 @@
-Colocar no arquivo views/dashboard.php
- 
 <!DOCTYPE html>
 <html lang="pt-br">
  

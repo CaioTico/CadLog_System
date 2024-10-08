@@ -1,29 +1,28 @@
+
 <?php
-    // Definição da classe UserController, responsável por gerenciar as ações relacionadas aos usuários
+ 
+class UserController{
+    public function register(){
+        //Verifica se a requisição HTTP é do tipo POST (se o formulário foi enviado)
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Coleta os dados pelo formulário e organiza em um array
+            $data = [
+                'nome' => $_POST['nome'],
+                'email' => $_POST['email'],
+                'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT),
+                //Criptografa a senha
+                'perfil' => $_POST['perfil']
+            ];
+            //Chama o método create do model User para criar o novo usuário no BD
+            
+            User::create($data);
+            header('Location: index.php');
+        } else{
+            // Se a requisição não for POST (por exemplo, GET), carrega a página de registro
+            include 'views/register.php';
 
-    class UserController {
-
-        public function register() {
-            // Verifica se o método da requisição é POST
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Cria um array com os dados do usuário
-                $data = [
-                    'name'  => $_POST['name'],
-                    'email' => $_POST['email'],
-                    'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT),
-                    'perfil'=> $_POST['perfil']
-                ];
-                
-                // Cria um novo usuário com os dados fornecidos
-                User::create($data);
-                
-                // Redireciona o usuário para a página de índice
-                header('Location: index.php');
-                exit; // Adicionei o exit para garantir que o script seja interrompido após a redirecionamento
-            } else {
-                // Se o método da requisição não for POST, inclui a view de registro
-                include 'views/register.php';
-            }
-        }
+            
+        } 
     }
+}
 ?>
