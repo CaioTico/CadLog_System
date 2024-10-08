@@ -170,11 +170,11 @@
 <body>
     <div>
         <h2>Cadastro de Usuário</h2>
-        <form action="" method="post">
-            <label for="nome">Nome</label>
+        <form action="index.php?action=register" method="post">
+            <label for="name">Nome</label>
             <input type="text" name="nome" id="nome" required>
 
-            <label for="nome">Email</label>
+            <label for="email">Email</label>
             <input type="text" name="email" id="email" required>
 
             <label for="senha">Senha</label>
@@ -189,7 +189,7 @@
 
             <button type="submit">Cadastrar</button>
         </form>
-        <a href="">Voltar ao Login</a>
+        <a href="index.php?action=login">Voltar ao Login</a>
     </div>
 </body>
 
