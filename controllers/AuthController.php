@@ -7,7 +7,7 @@ class AuthController
 {
     // Cria função responsável pelo processo de login
     public function login()
-    {
+    {   
         // Verifica se a requisição HTTP é do tipo POST, ou seja, se o formulário foi enviado
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $email = $_POST['email'];
@@ -31,6 +31,12 @@ class AuthController
             // Se a requisição não for POST (por exemplo, GET), carrega a página de registro
             include 'views/login.php';
         }
+    }
+
+        public function logout(){
+            session_start();
+            session_destroy();
+            header('Location: index.php');
     }
 }
 ?>
